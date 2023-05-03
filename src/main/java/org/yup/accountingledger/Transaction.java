@@ -1,35 +1,26 @@
 package org.yup.accountingledger;
 
-public class Transaction {
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-private int date;
-private int time;
+public class Transaction {
+public String dateTime;
 private String description;
 private String vendor;
 private float amount;
 
-    public Transaction(int date, int time, String description, String vendor, float amount) {
-        this.date = date;
-        this.time = time;
+    public Transaction(String description, String vendor, float amount) {
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
     }
 
-    public int getDate() {
-        return date;
-    }
+    public String getDateTime() {
+        LocalDateTime dateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd | HH:mm:ss");
+        String formattedDateTime = dateTime.format(formatter);
 
-    public void setDate(int date) {
-        this.date = date;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
+        return formattedDateTime;
     }
 
     public String getDescription() {
