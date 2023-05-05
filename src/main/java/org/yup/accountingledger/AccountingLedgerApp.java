@@ -1,18 +1,22 @@
 package org.yup.accountingledger;
 
-import static org.yup.accountingledger.Screens.userScanner;
-
 public class AccountingLedgerApp {
 
-    public static void main (String [] args){
+    public static void main(String[] args) {
 
-        System.out.println("Welcome to the PLUR ledger!\n");
+        runLedger();
+
+    }
+
+    public static void runLedger() {
+
+        System.out.println("WELCOME to your personal ledger!\n");
 
         boolean appRunning = true;
 
-        while(appRunning){
+        while (appRunning) {
 
-            String homeScreenChoice = homeScreen();
+            String homeScreenChoice = Screens.homeScreen();
 
             switch (homeScreenChoice.toLowerCase()) {
                 case "d":
@@ -25,10 +29,11 @@ public class AccountingLedgerApp {
 
                 case "l":
                     System.out.print(Screens.ledgerScreen());
-
+                    appRunning = false;
                     break;
 
                 case "x":
+                    System.out.println("Manifesting more money for you.");
                     appRunning = false;
                     break;
 
@@ -37,25 +42,10 @@ public class AccountingLedgerApp {
                     break;
 
             }
-
-
         }
-
-        System.out.println("PLUR is life.");
-
     }
-
-    public static String homeScreen() {
-
-        System.out.println("Please choose from these actions: ");
-        System.out.println("\tD * to make a DEPOSIT");
-        System.out.println("\tP * to make a PAYMENT");
-        System.out.println("\tL * to display the LEDGER screen");
-        System.out.println("\tX * to EXIT\n");
-
-        System.out.print("Please make your selection: ");
-        return userScanner.nextLine();
-
-    }
-
 }
+
+
+
+
